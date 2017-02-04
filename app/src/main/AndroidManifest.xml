@@ -102,6 +102,118 @@
         <activity
             android:name="com.odoo.addons.customers.CustomerDetails"
             android:windowSoftInputMode="adjustPan" />
+
+        <provider
+            android:name="com.odoo.addons.calendar.providers.CalendarSyncProvider"
+            android:authorities="com.odoo.core.crm.provider.content.sync.calendar_event"
+            android:label="@string/sync_label_calendar"
+            android:multiprocess="true" />
+
+        <service
+            android:name="com.odoo.addons.calendar.services.CalendarSyncService"
+            android:exported="true"
+            android:process=":sync_agenda">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/calendar_sync_adapter" />
+        </service>
+
+        <provider
+            android:name="com.odoo.addons.crm.providers.CRMLeadProvider"
+            android:authorities="com.odoo.core.crm.provider.content.sync.crm_lead"
+            android:label="@string/sync_label_lead_opportunities"
+            android:multiprocess="true" />
+
+        <service
+            android:name="com.odoo.addons.crm.services.CRMLeadSyncService"
+            android:exported="true"
+            android:process=":sync_leads">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/crm_sync_adapter" />
+        </service>
+
+        <provider
+            android:name="com.odoo.addons.sale.providers.SaleOrderProvider"
+            android:authorities="com.odoo.core.crm.provider.content.sync.sale_order"
+            android:label="@string/sync_label_quotation_sales_orders"
+            android:multiprocess="true" />
+
+        <service
+            android:name="com.odoo.addons.sale.services.SaleOrderSyncService"
+            android:exported="true"
+            android:process=":sync_sale_orders">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/sale_sync_adapter" />
+        </service>
+
+        <provider
+            android:name="com.odoo.addons.phonecall.providers.PhoneCallProvider"
+            android:authorities="com.odoo.core.crm.provider.content.sync.crm_phonecall"
+            android:label="@string/sync_label_phonecalls"
+            android:multiprocess="true" />
+
+        <service
+            android:name="com.odoo.addons.phonecall.services.PhoneCallSyncService"
+            android:exported="true"
+            android:process=":sync_phone_calls">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/phonecall_sync_adapter" />
+        </service>
+
+        <activity
+            android:name="com.odoo.addons.calendar.EventDetail"
+            android:windowSoftInputMode="adjustPan" />
+         <activity
+            android:name="com.odoo.addons.crm.CRMDetail"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.odoo.addons.crm.ConvertToOpportunityWizard"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.odoo.addons.crm.ConvertToQuotation"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.odoo.addons.phonecall.PhoneCallDetail"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.odoo.addons.sale.SalesDetail"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <!-- Phone state receiver// -->
+        <receiver android:name="com.odoo.addons.phonecall.features.receivers.PhoneStateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.odoo.addons.sale.AddProductLineWizard"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

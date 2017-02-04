@@ -13,10 +13,14 @@
     <color name="colorAccent">@color/theme_accent</color>
 
     <!-- Drawer Properties -->
+    <color name="drawerDefaultBackgroundColor">#ffffff</color>
+    <dimen name="drawerDefaultWidth">280dp</dimen>
+    <dimen name="drawerAccountBottomPadding">16dp</dimen>
     <dimen name="drawerAvatarWidthHeight">80dp</dimen>
 
     <!-- Dimensions -->
     <dimen name="statusBarHeight">0dp</dimen>
 
     <!-- Booleans -->
+    <bool name="fitToScreenWindow">true</bool>
 </resources>

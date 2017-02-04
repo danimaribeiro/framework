@@ -40,6 +40,8 @@
         <item>@color/android_orange_dark</item>
     </array>
 
+    <color name="actionbar_spinner_text_color">#414141</color>
+
     <color name="base_chatter_view_background">#f3f3f3</color>
     <color name="base_chatter_view_note_background">#dadada</color>
 

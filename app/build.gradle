@@ -34,4 +34,9 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.volley:volley:1.0.0'
     compile project(':intro-slider-lib')
+    compile project(':bottom-sheet-lib')
+    compile project(':calendar-lib')
+    compile project(':odoo-rpc-v2')
+    compile project(':parallax-effect-lib')
+    compile project(':snackbar-lib')
 }

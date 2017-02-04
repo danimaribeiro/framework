@@ -1,1 +1,1 @@
-include ':app', ':intro-slider-lib'
+include ':app', ':intro-slider-lib', ':bottom-sheet-lib', ':calendar-lib', ':odoo-rpc-v2', ':parallax-effect-lib', ':snackbar-lib'
