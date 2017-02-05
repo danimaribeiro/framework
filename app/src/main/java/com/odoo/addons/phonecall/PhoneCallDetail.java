@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -80,7 +81,10 @@ public class PhoneCallDetail extends ActionBarActivity implements OField.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crm_phonecall_detail);
         crmPhoneCalls = new CRMPhoneCalls(this, null);
-        OActionBarUtils.setActionBar(this, true);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);;
+
         actionBar = getSupportActionBar();
         actionBar.setTitle(R.string.label_log_call);
         extra = getIntent().getExtras();

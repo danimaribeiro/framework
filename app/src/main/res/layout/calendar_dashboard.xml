@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"></com.odoo.libs.calendar.view.OdooCalendar>
 
-    <odoo.controls.fab.FloatingActionButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabButton"
         android:layout_width="72dp"
         android:layout_height="72dp"

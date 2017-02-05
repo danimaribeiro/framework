@@ -5,9 +5,9 @@ android {
     buildToolsVersion '25'
     defaultConfig {
         useLibrary 'org.apache.http.legacy'
-        manifestPlaceholders = [applicationName: "Odoo"]
-        applicationId "com.odoo"
-        minSdkVersion 14
+        manifestPlaceholders = [applicationName: "Trustcode"]
+        applicationId 'odoo.trustcode'
+        minSdkVersion 23
         targetSdkVersion 25
         versionCode 7
         versionName "2.3.0"
@@ -24,19 +24,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:cardview-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.google.android.gms:play-services-gcm:10.0.1'
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.volley:volley:1.0.0'
     compile project(':intro-slider-lib')
-    compile project(':bottom-sheet-lib')
     compile project(':calendar-lib')
     compile project(':odoo-rpc-v2')
     compile project(':parallax-effect-lib')
     compile project(':snackbar-lib')
+    compile project(':odooBottomSheetLib')
 }

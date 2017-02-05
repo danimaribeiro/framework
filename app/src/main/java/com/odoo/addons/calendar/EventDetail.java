@@ -24,6 +24,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -53,7 +55,7 @@ import java.util.Date;
 import odoo.controls.OField;
 import odoo.controls.OForm;
 
-public class EventDetail extends ActionBarActivity implements View.OnClickListener,
+public class EventDetail extends AppCompatActivity implements View.OnClickListener,
         EventColorDialog.OnColorSelectListener, OField.IOnFieldValueChangeListener, ReminderDialog.OnReminderValueSelectListener {
     public static final String TAG = EventDetail.class.getSimpleName();
     private ActionBar actionBar;
@@ -75,8 +77,11 @@ public class EventDetail extends ActionBarActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_event_detail_form);
-        OActionBarUtils.setActionBar(this, true);
         calendarEvent = new CalendarEvent(this, null);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);;
+
         actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_action_mark_undone);
         actionBar.setTitle(R.string.label_new_meeting);

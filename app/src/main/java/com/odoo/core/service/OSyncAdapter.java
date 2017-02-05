@@ -27,7 +27,7 @@ import android.content.SyncResult;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.R;
 import com.odoo.base.addons.ir.IrModel;
 import com.odoo.base.addons.res.ResCompany;
@@ -59,7 +59,7 @@ import java.util.List;
 public class OSyncAdapter extends AbstractThreadedSyncAdapter {
     public static final String TAG = OSyncAdapter.class.getSimpleName();
     private Context mContext;
-    private App app = null;
+    private Trustcode app = null;
     private Odoo mOdoo;
     private OModel mModel;
     private OSyncService mService;
@@ -88,7 +88,7 @@ public class OSyncAdapter extends AbstractThreadedSyncAdapter {
         mModelClass = model;
         mService = service;
         preferenceManager = new OPreferenceManager(mContext);
-        app = (App) context.getApplicationContext();
+        app = (Trustcode) context.getApplicationContext();
     }
 
     public OSyncAdapter setDomain(ODomain domain) {
@@ -290,7 +290,7 @@ public class OSyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
     public static Odoo createOdooInstance(final Context context, final OUser user) {
-        final App app = (App) context.getApplicationContext();
+        final Trustcode app = (Trustcode) context.getApplicationContext();
         Odoo odoo = app.getOdoo(user);
         try {
             if (odoo == null) {

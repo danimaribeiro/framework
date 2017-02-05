@@ -24,13 +24,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.addons.crm.models.CRMCaseStage;
 import com.odoo.addons.crm.models.CRMLead;
 import com.odoo.addons.customers.Customers;
@@ -53,7 +55,7 @@ import java.util.List;
 
 import odoo.controls.OForm;
 
-public class CRMDetail extends ActionBarActivity {
+public class CRMDetail extends AppCompatActivity {
     public static final String TAG = CRMDetail.class.getSimpleName();
     public static final int REQUEST_CONVERT_TO_OPPORTUNITY_WIZARD = 1223;
     public static final int REQUEST_CONVERT_TO_QUOTATION_WIZARD = 1224;
@@ -72,6 +74,10 @@ public class CRMDetail extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crm_detail);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+
         actionBar = getSupportActionBar();
         crmLead = new CRMLead(this, null);
         extra = getIntent().getExtras();
@@ -150,7 +156,7 @@ public class CRMDetail extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        App app = (App) getApplicationContext();
+        Trustcode app = (Trustcode) getApplicationContext();
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();

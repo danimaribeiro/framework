@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +35,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.R;
 import com.odoo.addons.sale.models.ProductProduct;
 import com.odoo.addons.sale.models.SaleOrder;
@@ -44,6 +45,7 @@ import com.odoo.core.orm.ODataRow;
 import com.odoo.core.orm.OValues;
 import com.odoo.core.orm.ServerDataHelper;
 import com.odoo.core.orm.fields.OColumn;
+import com.odoo.core.rpc.helper.ORecordValues;
 import com.odoo.core.utils.JSONUtils;
 import com.odoo.core.utils.OAlert;
 import com.odoo.core.utils.OControls;
@@ -60,6 +62,8 @@ import java.util.List;
 import odoo.controls.ExpandableListControl;
 import odoo.controls.OField;
 import odoo.controls.OForm;
+
+import com.odoo.core.rpc.helper.OArguments;
 
 import static com.odoo.addons.sale.Sales.Type;
 
@@ -88,6 +92,10 @@ public class SalesDetail extends ActionBarActivity implements View.OnClickListen
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sale_detail);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+
         actionBar = getSupportActionBar();
         sale = new SaleOrder(this, null);
         extra = getIntent().getExtras();
@@ -210,7 +218,7 @@ public class SalesDetail extends ActionBarActivity implements View.OnClickListen
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         OValues values = mForm.getValues();
-        App app = (App) getApplicationContext();
+        Trustcode app = (Trustcode) getApplicationContext();
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
@@ -290,7 +298,7 @@ public class SalesDetail extends ActionBarActivity implements View.OnClickListen
                     }
                 }
                 Thread.sleep(500);
-                JSONObject data = new JSONObject();
+                ORecordValues data = new ORecordValues();
                 data.put("name", values.getString("name"));
                 data.put("partner_id", partner.selectServerId(values.getInt("partner_id")));
                 data.put("date_order", values.getString("date_order"));
@@ -434,43 +442,43 @@ public class SalesDetail extends ActionBarActivity implements View.OnClickListen
                 ResPartner partner = new ResPartner(SalesDetail.this, sale.getUser());
                 ODataRow customer = partner.browse(mForm.getValues().getInt("partner_id"));
                 ServerDataHelper helper = saleLine.getServerDataHelper();
-                boolean stockInstalled = saleLine.isInstalledOnServer("stock");
+                // TODO aqui deve ir um metodo assincrono
+                //saleLine.isInstalledOnServer("stock", null);
                 for (String key : params[0].keySet()) {
                     ODataRow product = productProduct.browse(productProduct.selectRowId(Integer.parseInt(key)));
                     Float qty = params[0].get(key);
-                    //OArguments arguments = new OArguments();
-                    //arguments.add(new JSONArray());
+                    OArguments arguments = new OArguments();
+                    arguments.add(new JSONArray());
                     int pricelist = customer.getInt("pricelist_id");
-                    //arguments.add(pricelist); // Price List for customer
-//                    arguments.add(product.getInt("id")); // product id
-//                    arguments.add(qty); // Quantity
-//                    arguments.add(false); // UOM
-//                    arguments.add(qty); // Qty_UOS
-//                    arguments.add(false);// UOS
-//                    arguments.add((product.getString("name").equals("false")) ? false
-//                            : product.getString("name"));
-//                    arguments.add(customer.getInt("id")); // Partner id
-//                    arguments.add(false); // lang
-//                    arguments.add(true); // update_tax
-//                    arguments.add((customer.getString("date_order").equals("false")) ? false
-//                            : customer.getString("date_order")); // date order
-//                    arguments.add(false); // packaging
+                    arguments.add(pricelist); // Price List for customer
+                    arguments.add(product.getInt("id")); // product id
+                    arguments.add(qty); // Quantity
+                    arguments.add(false); // UOM
+                    arguments.add(qty); // Qty_UOS
+                    arguments.add(false);// UOS
+                    arguments.add((product.getString("name").equals("false")) ? false
+                            : product.getString("name"));
+                    arguments.add(customer.getInt("id")); // Partner id
+                    arguments.add(false); // lang
+                    arguments.add(true); // update_tax
+                    arguments.add((customer.getString("date_order").equals("false")) ? false
+                            : customer.getString("date_order")); // date order
+                    arguments.add(false); // packaging
                     Object fiscal_position = (customer.getString("fiscal_position").equals("false"))
                             ? false : customer.getString("fiscal_position");
-                    //arguments.add(fiscal_position);// fiscal position
-                    //arguments.add(false); // flag
+                    arguments.add(fiscal_position);// fiscal position
+                    arguments.add(false); // flag
                     int version = saleLine.getOdooVersion().getVersionNumber();
-                    if (stockInstalled && version > 7) {
+                    //if (stockInstalled && version > 7) {
                         //arguments.add(false);
-                    }
-                    JSONObject context = new JSONObject();
+                    //}
+                    HashMap<String, Object> context = new HashMap<String, Object>();
                     context.put("partner_id", customer.getInt("id"));
                     context.put("quantity", qty);
                     context.put("pricelist", pricelist);
 
-                    // Fixed for Odoo 7.0 no product_id_change_with_wh available for v7
-                    String method = (stockInstalled && version > 7) ? "product_id_change_with_wh" : "product_id_change";
-                    JSONObject response = ((JSONObject) helper.callMethod(method, arguments, context));
+                    JSONObject response = ((JSONObject) helper.callMethod(
+                            "product_id_change_with_wh", arguments, context));
                     JSONObject res = response.getJSONObject("value");
                     if (response.has("warning") && !response.getString("warning").equals("false")) {
                         JSONObject warning_data = response.getJSONObject("warning");
@@ -493,10 +501,10 @@ public class SalesDetail extends ActionBarActivity implements View.OnClickListen
                     values.put("tax_id", new JSONArray().put(tax_id));
                     values.put("th_weight", (res.has("th_weight")) ? res.get("th_weight") : 0);
                     values.put("discount", (res.has("discount")) ? res.get("discount") : 0);
-                    if (stockInstalled) {
-                        values.put("route_id", (res.has("route_id")) ? res.get("route_id") : false);
-                        values.put("delay", res.get("delay"));
-                    }
+                    //if (stockInstalled) {
+                    //    values.put("route_id", (res.has("route_id")) ? res.get("route_id") : false);
+                    //    values.put("delay", res.get("delay"));
+                    //}
                     if (extra != null)
                         values.put("order_id", extra.getInt(OColumn.ROW_ID));
                     items.add(values.toDataRow());

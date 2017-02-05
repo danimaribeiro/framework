@@ -31,7 +31,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.R;
 import com.odoo.addons.customers.utils.ShareUtil;
 import com.odoo.base.addons.ir.feature.OFileManager;
@@ -63,7 +63,7 @@ public class CustomerDetails extends OdooCompatActivity
     private ODataRow record = null;
     private ImageView userImage = null;
     private OForm mForm;
-    private App app;
+    private Trustcode app;
     private Boolean mEditMode = false;
     private Menu mMenu;
     private OFileManager fileManager;
@@ -94,7 +94,7 @@ public class CustomerDetails extends OdooCompatActivity
             mEditMode = savedInstanceState.getBoolean(KEY_MODE);
             newImage = savedInstanceState.getString(KEY_NEW_IMAGE);
         }
-        app = (App) getApplicationContext();
+        app = (Trustcode) getApplicationContext();
         resPartner = new ResPartner(this, null);
         extras = getIntent().getExtras();
         if (hasRecordInExtra())

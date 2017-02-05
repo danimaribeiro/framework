@@ -38,7 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.R;
 import com.odoo.base.addons.mail.MailMessage;
 import com.odoo.core.orm.ODataRow;
@@ -71,7 +71,7 @@ public class MailChatterView extends LinearLayout implements
     private List<Object> chatterItems = new ArrayList<>();
     private MailMessage mailMessage;
     private ChatterMessagesLoader messagesLoader;
-    private App app;
+    private Trustcode app;
     private Boolean loadAllMessages = false;
     private boolean isExecuting = false;
 
@@ -92,7 +92,7 @@ public class MailChatterView extends LinearLayout implements
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr) {
         mContext = context;
-        app = (App) mContext.getApplicationContext();
+        app = (Trustcode) mContext.getApplicationContext();
         if (attrs != null) {
             TypedArray types = mContext.obtainStyledAttributes(attrs,
                     R.styleable.MailChatterView);

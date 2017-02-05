@@ -29,10 +29,11 @@ import com.odoo.base.addons.res.ResPartner;
 import com.odoo.core.orm.ODataRow;
 import com.odoo.core.orm.ServerDataHelper;
 import com.odoo.core.orm.fields.OColumn;
+import com.odoo.core.rpc.helper.ODomain;
+import com.odoo.core.rpc.helper.OdooFields;
 
 import java.util.List;
 
-import odoo.ODomain;
 
 public class CustomerFinder {
     public static final String TAG = CustomerFinder.class.getSimpleName();

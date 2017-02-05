@@ -25,7 +25,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.util.Log;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.core.support.OUser;
 import com.odoo.datas.OConstants;
 
@@ -35,13 +35,13 @@ public class OSQLite extends SQLiteOpenHelper {
     public static final String TAG = OSQLite.class.getSimpleName();
     private Context mContext;
     private OUser mUser = null;
-    private App odooApp;
+    private Trustcode odooApp;
 
     public OSQLite(Context context, OUser user) {
         super(context, (user != null) ? user.getDBName() : OUser.current(context).getDBName(), null
                 , OConstants.DATABASE_VERSION);
         mContext = context;
-        odooApp = (App) context.getApplicationContext();
+        odooApp = (Trustcode) context.getApplicationContext();
         mUser = (user != null) ? user : OUser.current(context);
     }
 
@@ -53,7 +53,7 @@ public class OSQLite extends SQLiteOpenHelper {
         OSQLHelper sqlHelper = new OSQLHelper(mContext);
 
         for (String key : models.keySet()) {
-            OModel model = App.getModel(mContext, key, mUser);
+            OModel model = Trustcode.getModel(mContext, key, mUser);
             sqlHelper.createStatements(model);
         }
         for (String key : sqlHelper.getStatements().keySet()) {
@@ -69,7 +69,7 @@ public class OSQLite extends SQLiteOpenHelper {
         ModelRegistryUtils registryUtils = odooApp.getModelRegistry();
         HashMap<String, Class<? extends OModel>> models = registryUtils.getModels();
         for (String key : models.keySet()) {
-            OModel model = App.getModel(mContext, key, mUser);
+            OModel model = Trustcode.getModel(mContext, key, mUser);
             if (model != null) model.onModelUpgrade(db, oldVersion, newVersion);
         }
     }
@@ -81,7 +81,7 @@ public class OSQLite extends SQLiteOpenHelper {
     }
 
     public String databaseLocalPath() {
-        App app = (App) mContext.getApplicationContext();
+        Trustcode app = (Trustcode) mContext.getApplicationContext();
         return Environment.getDataDirectory().getPath() +
                 "/data/" + app.getPackageName() + "/databases/" + getDatabaseName();
     }

@@ -178,10 +178,10 @@ public class OUser {
         if (odooVersion != null) {
             data.putAll(odooVersion.getAsBundle());
         }
-        // Converting each value to string. Account supports only string values
-        //for (String key : data.keySet()) {
-        //    data.putString(key, data.get(key) + "");
-        //}
+        //Converting each value to string. Account supports only string values
+        for (String key : data.keySet()) {
+            data.putString(key, data.get(key) + "");
+        }
         return data;
     }
 

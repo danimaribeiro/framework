@@ -22,7 +22,7 @@
 
 
     <application
-        android:name="com.odoo.App"
+        android:name="com.odoo.Trustcode"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"

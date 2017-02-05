@@ -106,13 +106,13 @@
         <item name="180">180</item>
         <item name="360">360</item>
     </string-array>
-    <string name="summary_about_odoo_mobile">Odoo Mobile</string>
+    <string name="summary_about_odoo_mobile">Odoo Mobile - Trustcode</string>
     <!-- About Company Fragment Strings -->
     <string name="about_Company_line1">Copyright © 2004-TODAY Odoo SA. All Rights Reserved.</string>
     <string name="about_Company_line2">Odoo is a trademark of the <a href="https://www.odoo.com/">Odoo.com.</a></string>
     <string name="about_Company_line3">Licenced under the terms of <a href="http://www.gnu.org/licenses/agpl.html/">GNU Affero General Public License</a></string>
-    <string name="about_Company_line4">For more information visit <a href="https://www.odoo.com/">Odoo.com</a>.</string>
-    <string name="app_version_name">Version</string>
+    <string name="about_Company_line4">Para mais informações visite <a href="https://www.trustcode.com.br/">Trustcode</a>.</string>
+    <string name="app_version_name">Versão</string>
     <string name="notification_default_ring_tone">content://settings/system/notification_sound</string>
     <string name="disclaimer_content">By continuing, you agree to the <a href="http://www.odoo.com/">Terms of Service</a> and <a href="http://www.odoo.com/">Privacy Policy</a></string>
 

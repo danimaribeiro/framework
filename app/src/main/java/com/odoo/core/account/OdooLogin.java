@@ -17,7 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.OdooActivity;
 import com.odoo.R;
 import com.odoo.base.addons.res.ResCompany;
@@ -46,7 +46,7 @@ public class OdooLogin extends AppCompatActivity implements View.OnClickListener
 
     private EditText edtUsername, edtPassword, edtSelfHosted;
     private Boolean mCreateAccountRequest = false;
-    private Boolean mSelfHostedURL = false;
+    private Boolean mSelfHostedURL = true;
     private Boolean mConnectedToServer = false;
     private Boolean mAutoLogin = false;
     private Boolean mRequestedForAccount = false;
@@ -54,14 +54,14 @@ public class OdooLogin extends AppCompatActivity implements View.OnClickListener
     private Spinner databaseSpinner = null;
     private List<String> databases = new ArrayList<>();
     private TextView mLoginProcessStatus = null;
-    private App mApp;
+    private Trustcode mApp;
     private Odoo mOdoo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_login);
-        mApp = (App) getApplicationContext();
+        mApp = (Trustcode) getApplicationContext();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             if (extras.containsKey(OdooAuthenticator.KEY_NEW_ACCOUNT_REQUEST))

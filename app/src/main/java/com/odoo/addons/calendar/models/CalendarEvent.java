@@ -38,10 +38,10 @@ import com.odoo.core.orm.fields.types.OSelection;
 import com.odoo.core.orm.fields.types.OText;
 import com.odoo.core.orm.fields.types.OVarchar;
 import com.odoo.core.support.OUser;
+import com.odoo.core.rpc.helper.ODomain;
 
 import org.json.JSONArray;
 
-import odoo.ODomain;
 
 public class CalendarEvent extends OModel {
     public static final String TAG = CalendarEvent.class.getSimpleName();
@@ -113,8 +113,8 @@ public class CalendarEvent extends OModel {
     public CalendarEvent(Context context, OUser user) {
         super(context, "calendar.event", user);
         mContext = context;
-        if (getUser() != null && getUser().getVersion_number() != null) {
-            int version = getUser().getVersion_number();
+        if (getUser() != null && getUser().getOdooVersion() != null) {
+            int version = getUser().getOdooVersion().getVersionNumber();
             if (version <= 7) {
                 setModelName("crm.meeting");
             }
@@ -124,19 +124,19 @@ public class CalendarEvent extends OModel {
         setHasMailChatter(true);
     }
 
-//    @Override
-//    public ODomain defaultDomain() {
-//        ODomain domain = new ODomain();
-//        if (getOdooVersion().getVersionNumber() <= 7) {
-//            domain.add("|");
-//            domain.add("user_id", "=", getUser().getUser_id());
-//            domain.add("partner_ids", "in", new JSONArray().put(getUser().getPartner_id()));
-//        } else {
-//            domain.add("partner_ids", "in", new JSONArray().put(getUser().getPartner_id()));
-//        }
-//        domain.add("recurrency", "=", false);
-//        return domain;
-//    }
+    @Override
+    public ODomain defaultDomain() {
+        ODomain domain = new ODomain();
+        if (getOdooVersion().getVersionNumber() <= 7) {
+            domain.add("|");
+            domain.add("user_id", "=", getUser().getUserId());
+            domain.add("partner_ids", "in", new JSONArray().put(getUser().getPartnerId()));
+        } else {
+            domain.add("partner_ids", "in", new JSONArray().put(getUser().getPartnerId()));
+        }
+        domain.add("recurrency", "=", false);
+        return domain;
+    }
 
     @Override
     public Uri uri() {

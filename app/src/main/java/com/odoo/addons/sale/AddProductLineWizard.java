@@ -25,12 +25,13 @@ import com.odoo.core.support.list.OListAdapter;
 import com.odoo.core.utils.OAlert;
 import com.odoo.core.utils.OControls;
 import com.odoo.core.utils.OResource;
+import com.odoo.core.rpc.helper.OdooFields;
+import com.odoo.core.rpc.helper.ODomain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import odoo.ODomain;
 import odoo.controls.IOnQuickRecordCreateListener;
 
 public class AddProductLineWizard extends ActionBarActivity implements
@@ -263,11 +264,11 @@ public class AddProductLineWizard extends ActionBarActivity implements
             try {
                 ServerDataHelper helper = productProduct.getServerDataHelper();
                 ODomain domain = new ODomain();
-//                domain.add(productProduct.getDefaultNameColumn(), "ilike", params[0]);
+                domain.add(productProduct.getDefaultNameColumn(), "ilike", params[0]);
                 domain.add("id", "not in", productProduct.getServerIds());
                 if (mCol != null) {
                     for (String key : mCol.getDomains().keySet()) {
-                        // domain.add("sale_ok", "=", true);
+                        domain.add("sale_ok", "=", true);
                     }
                 }
                 OdooFields fields = new OdooFields(productProduct.getColumns());

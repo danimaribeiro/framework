@@ -24,7 +24,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.R;
 import com.odoo.addons.sale.Sales;
 import com.odoo.base.addons.res.ResCompany;
@@ -51,7 +51,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 
-import odoo.OArguments;
+import com.odoo.core.rpc.helper.OArguments;
 
 public class SaleOrder extends OModel {
     public static final String TAG = SaleOrder.class.getSimpleName();
@@ -98,10 +98,6 @@ public class SaleOrder extends OModel {
         super(context, "sale.order", user);
         mContext = context;
         setHasMailChatter(true);
-        if (getUser().getOdooVersion().getVersionNumber() == 7) {
-            date_order.setType(ODate.class);
-        }
-
     }
 
     @Override
@@ -115,25 +111,25 @@ public class SaleOrder extends OModel {
             ResPartner partner = new ResPartner(mContext, getUser());
             AccountPaymentTerm term = new AccountPaymentTerm(mContext, getUser());
             ODataRow customer = partner.browse(row.getInt(OColumn.ROW_ID));
-            App app = (App) mContext.getApplicationContext();
+            Trustcode app = (Trustcode) mContext.getApplicationContext();
             if (app.inNetwork()) {
                 ServerDataHelper helper = getServerDataHelper();
                 OArguments args = new OArguments();
                 args.add(new JSONArray());
                 args.add(customer.getInt("id"));
-                JSONObject res = ((JSONObject) helper.callMethod("onchange_partner_id", args, new JSONObject()))
-                        .getJSONObject("value");
-                if (res.has("partner_invoice_id"))
-                    data.put("partner_invoice_id", res.get("partner_invoice_id"));
-                if (res.has("partner_shipping_id"))
-                    data.put("partner_shipping_id", res.get("partner_shipping_id"));
-                if (res.has("pricelist_id"))
-                    data.put("pricelist_id", res.get("pricelist_id"));
-                if (res.has("payment_term") && !res.getString("payment_term").equals("false"))
-                    data.put("payment_term", term.selectRowId(res.getInt("payment_term")));
-                if (res.has("fiscal_position")) {
-                    data.put("fiscal_position", res.get("fiscal_position"));
-                }
+//                JSONObject res = ((JSONObject) helper.callMethod("onchange_partner_id", args, new JSONObject()))
+//                        .getJSONObject("value");
+//                if (res.has("partner_invoice_id"))
+//                    data.put("partner_invoice_id", res.get("partner_invoice_id"));
+//                if (res.has("partner_shipping_id"))
+//                    data.put("partner_shipping_id", res.get("partner_shipping_id"));
+//                if (res.has("pricelist_id"))
+//                    data.put("pricelist_id", res.get("pricelist_id"));
+//                if (res.has("payment_term") && !res.getString("payment_term").equals("false"))
+//                    data.put("payment_term", term.selectRowId(res.getInt("payment_term")));
+//                if (res.has("fiscal_position")) {
+//                    data.put("fiscal_position", res.get("fiscal_position"));
+//                }
                 partner.update(customer.getInt(OColumn.ROW_ID), data.toValues());
             } else {
                 data.put("partner_invoice_id", customer.get("partner_invoice_id"));
@@ -150,7 +146,7 @@ public class SaleOrder extends OModel {
 
     public ODataRow currency() {
         ResCompany company = new ResCompany(mContext, getUser());
-        ODataRow row = company.browse(null, "id = ? ", new String[]{getUser().getCompany_id()});
+        ODataRow row = company.browse(null, "id = ? ", new String[]{getUser().getCompanyId().toString()});
         if (row != null && !row.getString("currency_id").equals("false")) {
             return row.getM2ORecord("currency_id").browse();
         } else {

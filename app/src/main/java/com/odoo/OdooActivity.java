@@ -96,14 +96,14 @@ public class OdooActivity extends OdooCompatActivity {
     private Bundle mSavedInstanceState = null;
     private Integer mDrawerSelectedIndex = -1;
     private Boolean mHasActionBarSpinner = false;
-    private App app;
+    private Trustcode app;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.i(TAG, "OdooActivity->onCreate");
         mSavedInstanceState = savedInstanceState;
-        app = (App) getApplicationContext();
+        app = (Trustcode) getApplicationContext();
         startApp(savedInstanceState);
     }
 

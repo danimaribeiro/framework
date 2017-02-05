@@ -34,6 +34,7 @@ import com.odoo.core.orm.fields.types.OBoolean;
 import com.odoo.core.orm.fields.types.OText;
 import com.odoo.core.orm.fields.types.OVarchar;
 import com.odoo.core.support.OUser;
+import com.odoo.addons.sale.models.AccountPaymentTerm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,12 @@ public class ResPartner extends OModel {
     OColumn company_name = new OColumn("Company Name", OVarchar.class).setSize(100)
             .setLocalColumn();
     OColumn large_image = new OColumn("Image", OBlob.class).setDefaultValue("false").setLocalColumn();
+
+    OColumn partner_invoice_id = new OColumn("partner_invoice_id", OVarchar.class).setLocalColumn();
+    OColumn partner_shipping_id = new OColumn("partner_shipping_id", OVarchar.class).setLocalColumn();
+    OColumn pricelist_id = new OColumn("pricelist_id", OVarchar.class).setLocalColumn();
+    OColumn fiscal_position = new OColumn("fiscal_position", OVarchar.class).setLocalColumn();
+    OColumn payment_term = new OColumn("Payment Term", AccountPaymentTerm.class, OColumn.RelationType.ManyToOne).setLocalColumn();
 
     OColumn category_id = new OColumn("Tags", ResPartnerCategory.class,
             OColumn.RelationType.ManyToMany);

@@ -268,8 +268,8 @@ public class CalendarDashboard extends BaseFragment implements View.OnClickListe
     public View getEventsView(ViewGroup parent, SysCal.DateInfo date) {
         calendarView = LayoutInflater.from(getActivity()).inflate(
                 R.layout.calendar_dashboard_items, parent, false);
-        calendarView.findViewById(R.id.dashboard_no_item_view)
-                .setOnClickListener(this);
+        //calendarView.findViewById(R.id.dashboard_no_item_view)
+        //        .setOnClickListener(this);
         dashboardListView = (ListView) calendarView
                 .findViewById(R.id.items_container);
         setHasFloatingButton(mView, R.id.fabButton, dashboardListView, this);
@@ -606,7 +606,7 @@ public class CalendarDashboard extends BaseFragment implements View.OnClickListe
     @Override
     public List<ODrawerItem> drawerMenus(Context context) {
         List<ODrawerItem> menu = new ArrayList<>();
-        menu.add(new ODrawerItem(KEY).setTitle("Calendar")
+        menu.add(new ODrawerItem(KEY).setTitle("Calendário")
                 .setInstance(new CalendarDashboard())
                 .setIcon(R.drawable.ic_action_dashboard));
         return menu;

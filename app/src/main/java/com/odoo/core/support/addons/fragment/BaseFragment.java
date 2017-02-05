@@ -36,7 +36,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.OdooActivity;
 import com.odoo.R;
 import com.odoo.core.orm.OModel;
@@ -155,7 +155,7 @@ public abstract class BaseFragment extends Fragment implements IBaseFragment {
     }
 
     public boolean inNetwork() {
-        App app = (App) mContext.getApplicationContext();
+        Trustcode app = (Trustcode) mContext.getApplicationContext();
         return app.inNetwork();
     }
 

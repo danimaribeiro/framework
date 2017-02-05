@@ -41,12 +41,12 @@ import com.odoo.core.orm.fields.types.OVarchar;
 import com.odoo.core.support.OUser;
 import com.odoo.core.utils.ODateUtils;
 import com.odoo.core.utils.reminder.ReminderUtils;
+import com.odoo.core.rpc.helper.ODomain;
 
 import org.json.JSONArray;
 
 import java.util.Date;
 
-import odoo.ODomain;
 
 public class CRMPhoneCalls extends OModel {
     public static final String TAG = CRMPhoneCalls.class.getSimpleName();
@@ -109,7 +109,7 @@ public class CRMPhoneCalls extends OModel {
     @Override
     public ODomain defaultDomain() {
         ODomain domain = new ODomain();
-        domain.add("user_id", "=", getUser().getUser_id());
+        domain.add("user_id", "=", getUser().getUserId());
         return domain;
     }
 

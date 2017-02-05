@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trustcode</string>
+    <string name="account_settings">Configurações de conta</string>
+    <string name="add_account">Adicionar Conta</string>
+    <string name="app_version_name">Versão</string>
+    <string name="application_settings_summary">Configurações de sincronização, intervalo, limites e mais.</string>
+    <string name="at_the_time_of_event"></string>
+    <string name="build_version">Versão de build</string>
+    <string name="label_sale_create_invoice">Criar Fatura</string>
+    <string name="label_sale_confirm_sale">Confirmar Venda</string>
+    <string name="label_no_scheduled_calls_found">Nenhuma ligação agendada</string>
+    <string name="label_odoo_developer_mode">Modo Desenvolvedor</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_opp">Oportunidade</string>
+    <string name="label_opportunities">Oportunidades</string>
+    <string name="label_opportunity">Oportunidade</string>
+    <string name="label_phone_calls">Chamadas</string>
+    <string name="label_quotation">Cotações</string>
+    <string name="label_sale_orders">Ordens de Venda</string>
+    <string name="label_quotation_confirm">Cotações Confirmadas!</string>
+    <string name="label_quotation_created">Cotação criada por</string>
+    <string name="label_re_schedule">Reexecutar</string>
+    <string name="sync_label_customers">Clientes</string>
+    <string name="sync_label_calendar">Calendário</string>
+    <string name="sync_label_lead_opportunities">Leads/Oportunidades</string>
+    <string name="label_all">Todos</string>
+    <string name="label_call">Chamada</string>
+
+</resources>

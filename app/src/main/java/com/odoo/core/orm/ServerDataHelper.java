@@ -22,7 +22,7 @@ package com.odoo.core.orm;
 import android.content.Context;
 
 import com.google.gson.internal.LinkedTreeMap;
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.core.rpc.Odoo;
 import com.odoo.core.rpc.helper.OArguments;
 import com.odoo.core.rpc.helper.ODomain;
@@ -44,12 +44,12 @@ public class ServerDataHelper {
     private OModel mModel;
     private Context mContext;
     private Odoo mOdoo;
-    private App mApp;
+    private Trustcode mApp;
 
     public ServerDataHelper(Context context, OModel model, OUser user) {
         mContext = context;
         mModel = model;
-        mApp = (App) mContext.getApplicationContext();
+        mApp = (Trustcode) mContext.getApplicationContext();
         mOdoo = mApp.getOdoo(user);
         if (mOdoo == null)
             mOdoo = OSyncAdapter.createOdooInstance(mContext, model.getUser());

@@ -35,7 +35,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.OdooActivity;
 import com.odoo.R;
 import com.odoo.core.auth.OdooAccountManager;
@@ -53,7 +53,7 @@ public class OdooAccountQuickManage extends AppCompatActivity implements View.On
     private LoginProcess loginProcess = null;
     private EditText edtPassword;
     private String action;
-    private App mApp;
+    private Trustcode mApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class OdooAccountQuickManage extends AppCompatActivity implements View.On
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         getSupportActionBar().hide();
         action = getIntent().getAction();
-        mApp = (App) getApplicationContext();
+        mApp = (Trustcode) getApplicationContext();
         user = OdooAccountManager.getDetails(this, getIntent().getStringExtra("android_name"));
         if (action.equals("remove_account")) {
             findViewById(R.id.layoutSavePassword).setVisibility(View.GONE);

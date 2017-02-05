@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="odoo-rpc-v2-unspecified">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/framework/odoo-rpc-v2/unspecified/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/framework/odoo-rpc-v2/unspecified/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/framework/odoo-rpc-v2/unspecified/jars/libs/core.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

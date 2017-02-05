@@ -41,7 +41,7 @@ import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.R;
 import com.odoo.base.addons.ir.IrAttachment;
 import com.odoo.core.orm.ODataRow;
@@ -80,7 +80,7 @@ public class OFileManager implements DialogInterface.OnClickListener {
     private RequestType requestType = null;
     private Uri newImageUri = null;
     private IrAttachment irAttachment = null;
-    private App mApp;
+    private Trustcode mApp;
     private DevicePermissionHelper devicePermissionHelper;
 
     public enum RequestType {
@@ -97,7 +97,7 @@ public class OFileManager implements DialogInterface.OnClickListener {
     public OFileManager(OdooCompatActivity activity) {
         mActivity = activity;
         irAttachment = new IrAttachment(mActivity, null);
-        mApp = (App) mActivity.getApplicationContext();
+        mApp = (Trustcode) mActivity.getApplicationContext();
         devicePermissionHelper = new DevicePermissionHelper(activity);
     }
 

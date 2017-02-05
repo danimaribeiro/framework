@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Odoo</string>
+    <string name="app_name">Trustcode</string>
     <string name="label_today">Today</string>
     <string name="sync_label_customers">Customers</string>
     <string name="sync_label_calendar">Calendar</string>
@@ -99,6 +99,4 @@
 
     <!-- Working day start time -->
     <string name="default_day_start_time">09:00:00</string>
-
-
 </resources>

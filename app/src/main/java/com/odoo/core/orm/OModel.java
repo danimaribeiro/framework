@@ -28,7 +28,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.BuildConfig;
 import com.odoo.base.addons.ir.IrModel;
 import com.odoo.core.auth.OdooAccountManager;
@@ -115,10 +115,10 @@ public class OModel implements ISyncServiceListener {
         if (mUser != null) {
             mOdooVersion = mUser.getOdooVersion();
 
-            sqLite = App.getSQLite(mUser.getAndroidName());
+            sqLite = Trustcode.getSQLite(mUser.getAndroidName());
             if (sqLite == null) {
                 sqLite = new OSQLite(mContext, mUser);
-                App.setSQLite(mUser.getAndroidName(), sqLite);
+                Trustcode.setSQLite(mUser.getAndroidName(), sqLite);
             }
         }
     }
@@ -474,7 +474,7 @@ public class OModel implements ISyncServiceListener {
 
     public static OModel get(Context context, String model_name, String username) {
         OUser user = OdooAccountManager.getDetails(context, username);
-        return App.getModel(context, model_name, user);
+        return Trustcode.getModel(context, model_name, user);
     }
 
     public String authority() {
@@ -1129,7 +1129,7 @@ public class OModel implements ISyncServiceListener {
     }
 
     public void isInstalledOnServer(final String module_name, IModuleInstallListener callback) {
-        App app = (App) mContext.getApplicationContext();
+        Trustcode app = (Trustcode) mContext.getApplicationContext();
         app.getOdoo(getUser()).installedOnServer(module_name, new IModuleInstallListener() {
             @Override
             public void installedOnServer(boolean isInstalled) {

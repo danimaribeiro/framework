@@ -30,7 +30,7 @@ import android.support.annotation.BoolRes;
 import android.support.design.widget.BottomSheetDialog;
 import android.util.Log;
 
-import com.odoo.App;
+import com.odoo.Trustcode;
 import com.odoo.core.orm.OModel;
 import com.odoo.core.orm.OSQLite;
 import com.odoo.core.support.OUser;
@@ -147,10 +147,10 @@ public class OdooAccountManager {
     }
 
     public static void dropDatabase(OUser user) {
-        OSQLite sqLite = App.getSQLite(user.getAndroidName());
+        OSQLite sqLite = Trustcode.getSQLite(user.getAndroidName());
         if (sqLite != null) {
             sqLite.dropDatabase();
-            App.setSQLite(user.getAndroidName(), null);
+            Trustcode.setSQLite(user.getAndroidName(), null);
         }
     }
 
@@ -236,7 +236,7 @@ public class OdooAccountManager {
     public static OUser login(Context context, String username) {
 
         // Setting odoo instance to null
-        App app = (App) context.getApplicationContext();
+        Trustcode app = (Trustcode) context.getApplicationContext();
         app.setOdoo(null, null);
         OUser activeUser = getActiveUser(context);
         // Logging out user if any
