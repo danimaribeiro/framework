@@ -22,6 +22,9 @@ package com.odoo.config;
 import com.odoo.addons.calendar.CalendarDashboard;
 import com.odoo.addons.crm.CRMLeads;
 import com.odoo.addons.customers.Customers;
+import com.odoo.addons.mail.Groups;
+import com.odoo.addons.mail.Mail;
+import com.odoo.addons.mail.models.MailGroup;
 import com.odoo.addons.phonecall.PhoneCalls;
 import com.odoo.addons.sale.Sales;
 import com.odoo.core.support.addons.AddonsHelper;
@@ -42,5 +45,7 @@ public class Addons extends AddonsHelper {
     OAddon c_crm_leads = new OAddon(CRMLeads.class);
     OAddon e_sale = new OAddon(Sales.class);
     OAddon f_phone_calls = new OAddon(PhoneCalls.class);
+    OAddon g_groups = new OAddon(Groups.class);
+    OAddon h_mail = new OAddon(Mail.class);
 
 }

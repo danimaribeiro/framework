@@ -80,7 +80,7 @@ public enum FieldNamingPolicy implements FieldNamingStrategy {
    *
    * <p>Here's a few examples of the form "Java Field Name" ---> "JSON Field Name":</p>
    * <ul>
-   *   <li>someFieldName ---> some_field_name</li>
+   *   <li>someFieldName ---> some_fieldName</li>
    *   <li>_someFieldName ---> _some_field_name</li>
    *   <li>aStringField ---> a_string_field</li>
    *   <li>aURL ---> a_u_r_l</li>

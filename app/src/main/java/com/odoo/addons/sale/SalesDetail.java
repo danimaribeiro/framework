@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,7 +68,7 @@ import com.odoo.core.rpc.helper.OArguments;
 
 import static com.odoo.addons.sale.Sales.Type;
 
-public class SalesDetail extends ActionBarActivity implements View.OnClickListener {
+public class SalesDetail extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = SalesDetail.class.getSimpleName();
     public static final int REQUEST_ADD_ITEMS = 323;
     private Bundle extra;

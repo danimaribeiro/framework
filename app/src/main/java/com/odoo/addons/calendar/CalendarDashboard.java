@@ -125,6 +125,7 @@ public class CalendarDashboard extends BaseFragment implements View.OnClickListe
         Event, PhoneCall, Opportunity
     }
 
+
     private enum FilterType {
         All(R.string.label_all), Meetings(R.string.label_meetings),
         Opportunities(R.string.label_opportunity), PhoneCalls(R.string.label_phone_calls);

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="swipe_library.swipe_library">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/swipe_library/swipe_library.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

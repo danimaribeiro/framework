@@ -41,4 +41,6 @@ dependencies {
     compile project(':parallax-effect-lib')
     compile project(':snackbar-lib')
     compile project(':odooBottomSheetLib')
+    compile project(':nineoldandroids-2.4.0')
+    compile project(':swipe_library')
 }

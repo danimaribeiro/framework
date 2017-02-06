@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <integer name="font_textStyle_medium">1</integer> <!-- bold -->
+    <integer name="font_textStyle_drawer_item">0</integer> <!-- normal -->
+    <string name="font_fontFamily_drawer_item">sans-serif</string>
+
     <!-- Fonts -->
     <string name="font_normal">sans-serif</string>
     <string name="font_light">sans-serif-light</string>
     <string name="font_condensed">sans-serif-condensed</string>
+    <string name="font_fontFamily_condensed">sans-serif-condensed</string>
+    <string name="font_fontFamily_light">sans-serif-light</string>
 
     <!-- Text colors -->
     <color name="body_text_1">#de000000</color>

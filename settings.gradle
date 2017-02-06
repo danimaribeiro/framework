@@ -1,2 +1,2 @@
-include ':app', ':intro-slider-lib', ':calendar-lib', ':odoo-rpc-v2', ':parallax-effect-lib', ':snackbar-lib'
+include ':app', ':intro-slider-lib', ':calendar-lib', ':odoo-rpc-v2', ':parallax-effect-lib', ':snackbar-lib', ':nineoldandroids-2.4.0', ':swipe_library'
 include ':odooBottomSheetLib'

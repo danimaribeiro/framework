@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -55,6 +56,7 @@ import com.odoo.core.auth.OdooAccountManager;
 import com.odoo.core.auth.OdooAuthenticator;
 import com.odoo.core.support.OUser;
 import com.odoo.core.support.OdooCompatActivity;
+import com.odoo.core.support.addons.fragment.AsyncTaskListener;
 import com.odoo.core.support.addons.fragment.IBaseFragment;
 import com.odoo.core.support.drawer.ODrawerItem;
 import com.odoo.core.support.sync.SyncUtils;
@@ -626,6 +628,35 @@ public class OdooActivity extends OdooCompatActivity {
 
     public void refreshDrawer() {
         setupDrawerBox();
+    }
+
+    public class BackgroundTask extends AsyncTask<Void, Void, Object> {
+        AsyncTaskListener mListener = null;
+
+        public BackgroundTask(AsyncTaskListener listener) {
+            mListener = listener;
+        }
+
+        @Override
+        protected Object doInBackground(Void... params) {
+            if (mListener != null) {
+                return mListener.onPerformTask();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object result) {
+            super.onPostExecute(result);
+            if (mListener != null) {
+                mListener.onFinish(result);
+                mListener = null;
+            }
+        }
+    }
+
+    public BackgroundTask newBackgroundTask(AsyncTaskListener taskListener) {
+        return new BackgroundTask(taskListener);
     }
 
 }

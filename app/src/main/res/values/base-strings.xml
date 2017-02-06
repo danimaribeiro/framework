@@ -41,6 +41,18 @@
     <string name="label_close">Close</string>
     <string name="label_send">Send</string>
 
+    <!-- Account -->
+    <string name="account_user_dp">Account User Display Picture</string>
+    <string name="logo_description">Odoo</string>
+    <string name="str_user_login">User Login</string>
+    <string name="str_user_name">User Name</string>
+    <string name="str_server_url">Server URL</string>
+    <string name="str_database">Database</string>
+    <string name="str_odoo_version">Odoo Version</string>
+    <string name="str_timezone">TimeZone</string>
+    <string name="login_select_database">Select Database</string>
+
+
     <!-- package warning -->
     <!-- Drawer -->
     <string name="label_drawer_account_add_account">Add Account</string>
@@ -142,6 +154,8 @@
     <string name="label_no_records_found">No Records Found</string>
     <!-- Setting pref strings -->
     <string name="general_settings">General Settings</string>
+    <string name="syncwizard_title">Enable/Disable your Sync Settings</string>
+    <string name="syncwizard_description">Select your auto sync option so application will get up to-date automatically.</string>
     <string name="application_settings_summary">Sync settings, Interval settings, sync data limit, and more</string>
     <string name="account_settings">Account Settings</string>
     <string name="add_account">Add Account</string>

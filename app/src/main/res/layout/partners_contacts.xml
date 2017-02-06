@@ -1,0 +1,35 @@
+<odoo.controls.OForm xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:odoo="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="horizontal"
+    android:padding="2dp"
+    odoo:modelName="res.partner" >
+
+    <odoo.controls.OField
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_margin="2dp"
+        odoo:widgetType="ImageCircle"
+        odoo:defaultImage="@drawable/avatar"
+        odoo:fieldName="image_small"
+        odoo:widgetImageSize="16dp"
+        odoo:showLabel="false" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <odoo.controls.OField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            odoo:fieldName="name"
+            odoo:fieldTextAppearance="?android:attr/textAppearanceMedium"
+            odoo:showLabel="false" />
+    </LinearLayout>
+
+</odoo.controls.OForm>

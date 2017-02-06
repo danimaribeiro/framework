@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -54,7 +55,7 @@ import java.util.Date;
 import odoo.controls.OField;
 import odoo.controls.OForm;
 
-public class PhoneCallDetail extends ActionBarActivity implements OField.
+public class PhoneCallDetail extends AppCompatActivity implements OField.
         IOnFieldValueChangeListener, ReminderDialog.OnReminderValueSelectListener,
         View.OnClickListener {
     public static final String TAG = PhoneCallDetail.class.getSimpleName();
